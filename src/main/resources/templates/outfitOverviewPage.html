@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html layout:decorate="~{../static/index}" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<!--/*@thymesVar id="examples" type="java.util.List<com.breuninger.arch.playground.example.domain.Example>"*/-->
+<head>
+  <title>Outfits</title>
+</head>
+<body>
+<th:block layout:fragment="content">
+  <p th:each="example : ${outfits}"><img th:src="${example.ansichten.outfitUrl}"></img>
+       <span th:each="slide: ${example.slides}" th:text="${slide.variant}"></span>
+  </p>
+</th:block>
+</body>
+</html>
