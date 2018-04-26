@@ -12,10 +12,26 @@ Have fun hacking.
 
 > Use [IntelliJ](https://www.jetbrains.com/idea/download) for coding.
 1. Install jdk10 on you machine 
-2. Install and start mongodb on you machine
+2. Install and start mongodb on you machine or use docker mongo setup below
 3. Before opening anything install the *Lombok Plugin*: **Settings => Plugins => Browse repositories... => search for "Lombok Plugin" => Install => Restart IntelliJ**
 4. **Open** the cloned github folder and the gradle import wizard should pop up.
 5. After gradle is done setting up the project enable annotation processing: **Settings => Build, Execution, Development => Compiler => Annotation Processors => Enable annotation processing**
+
+### Docker mongodb setup
+
+just run 
+
+    $ docker run --rm -ti --mount type=bind,source="$(pwd)"/data/dump,target=/foo -p 27017:27017 mongo /bin/bash
+
+then you get an shell where you can simply launch mongodb via:
+
+    $ mongod --bind_ip_all &
+
+finally the data import is as easy as
+
+    $ mongorestore /foo
+
+Please keep in mind: if you leave the base, the docker container stops and the data is gone! But maybe that's also the advantage ;)
 
 ### Dependencies
 
